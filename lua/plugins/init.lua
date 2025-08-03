@@ -1,0 +1,6 @@
+require('plugins.lsp')
+require('plugins.rose-pine')
+require('plugins.telescope')
+require('plugins.treesitter')
+require('plugins.vimwiki')
+require('plugins.which-key')
