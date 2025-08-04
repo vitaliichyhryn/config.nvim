@@ -1,5 +1,6 @@
 require('plugins.blink-cmp')
 require('plugins.conform')
+require('plugins.gitsigns')
 require('plugins.lsp')
 require('plugins.rose-pine')
 require('plugins.telescope')
