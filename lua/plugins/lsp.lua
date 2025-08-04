@@ -21,10 +21,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local group = vim.api.nvim_create_augroup('lsp', { clear = true })
 
         -- Autocompletion
-        -- NOTE: As of now, built-in completion lacks the following features:
-        --       * Adequate fuzzy matching algorithm
-        --       * Ghost text
-        --       * Treesitter highlighting in the docs popup window
+        -- NOTE: vim.lsp.completion doesn't support:
+        --       * adequate fuzzy matching algorithm
+        --       * treesitter highlighting in the docs popup window
+        --       * virtual text
         -- vim.opt.completeopt = { 'menu', 'menuone', 'fuzzy', 'noinsert', 'popup' }
         --
         -- if client:supports_method('textDocument/completion') then
@@ -38,16 +38,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- end
 
         -- Autoformat on save
-        -- TODO: Switch to conform.nvim to be able to choose different formatters
-        if client:supports_method('textDocument/formatting') then
-            vim.api.nvim_create_autocmd('BufWritePre', {
-                group = group,
-                buffer = event.buf,
-                callback = function()
-                    vim.lsp.buf.format({ bufnr = event.buf, id = client.id })
-                end,
-            })
-        end
+        -- NOTE: vim.lsp doesn't support customization of formatters
+        -- if client:supports_method('textDocument/formatting') then
+        --     vim.api.nvim_create_autocmd('BufWritePre', {
+        --         group = group,
+        --         buffer = event.buf,
+        --         callback = function()
+        --             vim.lsp.buf.format({ bufnr = event.buf, id = client.id })
+        --         end,
+        --     })
+        -- end
 
         -- Highlight references on hold
         if client:supports_method('textDocument/documentHighlight') then
