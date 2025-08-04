@@ -21,18 +21,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local group = vim.api.nvim_create_augroup('lsp', { clear = true })
 
         -- Autocompletion
-        -- NOTE: As of now, fuzzy matching algorithm is not very good, so it is disabled
-        vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'popup' }
-
-        if client:supports_method('textDocument/completion') then
-            -- Trigger autocompletion on every keypress
-            client.server_capabilities.completionProvider.triggerCharacters =
-                vim.iter(vim.fn.range(32, 126))
-                :map(string.char)
-                :totable()
-
-            vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
-        end
+        -- NOTE: As of now, built-in completion lacks the following features:
+        --       * Adequate fuzzy matching algorithm
+        --       * Ghost text
+        --       * Treesitter highlighting in the docs popup window
+        -- vim.opt.completeopt = { 'menu', 'menuone', 'fuzzy', 'noinsert', 'popup' }
+        --
+        -- if client:supports_method('textDocument/completion') then
+        --     -- Trigger autocompletion on every keypress
+        --     client.server_capabilities.completionProvider.triggerCharacters =
+        --         vim.iter(vim.fn.range(32, 126))
+        --         :map(string.char)
+        --         :totable()
+        --
+        --     vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
+        -- end
 
         -- Autoformat on save
         -- TODO: Switch to conform.nvim to be able to choose different formatters

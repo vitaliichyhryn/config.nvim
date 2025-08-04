@@ -1,3 +1,4 @@
+require('plugins.blink-cmp')
 require('plugins.lsp')
 require('plugins.rose-pine')
 require('plugins.telescope')
