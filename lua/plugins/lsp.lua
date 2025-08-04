@@ -21,21 +21,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local group = vim.api.nvim_create_augroup('lsp', { clear = true })
 
         -- Autocompletion
-        vim.opt.completeopt = { 'menu', 'menuone', 'noinsert' }
+        -- NOTE: As of now, fuzzy matching algorithm is not very good, so it is disabled
+        vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'popup' }
 
         if client:supports_method('textDocument/completion') then
             -- Trigger autocompletion on every keypress
-            local chars = {}
-            for i = 32, 126 do
-                table.insert(chars, string.char(i))
-            end
-            client.server_capabilities.completionProvider.triggerCharacters = chars
+            client.server_capabilities.completionProvider.triggerCharacters =
+                vim.iter(vim.fn.range(32, 126))
+                :map(string.char)
+                :totable()
 
             vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
         end
 
-        -- TODO: Switch to conform.nvim to be able to choose different formatters
         -- Autoformat on save
+        -- TODO: Switch to conform.nvim to be able to choose different formatters
         if client:supports_method('textDocument/formatting') then
             vim.api.nvim_create_autocmd('BufWritePre', {
                 group = group,
