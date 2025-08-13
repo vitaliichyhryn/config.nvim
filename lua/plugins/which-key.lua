@@ -40,5 +40,6 @@ require('which-key').setup({
         { '<leader>f', group = '[F]ind' },
         { '<leader>p', group = '[P]ack' },
         { '<leader>w', group = '[W]iki' },
+        { '<leader>g', group = '[G]it' },
     },
 })
