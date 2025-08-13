@@ -7,5 +7,8 @@ require('mini.ai').setup({
         F = gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }),
     },
 })
-require('mini.surround').setup()
 require('mini.pairs').setup()
+require('mini.statusline').setup({
+    use_icons = vim.g.have_nerd_font,
+})
+require('mini.surround').setup()
