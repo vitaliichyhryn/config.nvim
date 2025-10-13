@@ -1,51 +1,50 @@
--- Leader key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+local opt = vim.opt
+local g = vim.g
 
--- Nerd font
-vim.g.have_nerd_font = false
+-- Globals
+g.mapleader = ' '
+g.maplocalleader = ' '
+g.have_nerd_font = false
 
--- Line numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
+-- Status column
+opt.statuscolumn = '%C %=%{v:relnum?v:relnum:v:lnum} %s'
+opt.foldcolumn = '1'      -- display fold column
+opt.signcolumn = 'yes'    -- display sign column
+opt.number = true         -- display number column
+opt.relativenumber = true -- make number relative
 
 -- Indentation
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 0
-vim.opt.expandtab = true
-vim.opt.smartindent = true
+opt.tabstop = 4
+opt.shiftwidth = 0
+opt.expandtab = true
+opt.smartindent = true
 
 -- Indent wrapped lines
-vim.opt.breakindent = true
+opt.breakindent = true
 
 -- Render whitespace characters
-vim.opt.list = true
-vim.opt.listchars = { tab = '> ', trail = '·', nbsp = '␣' }
-
--- Always draw signcolumn
-vim.opt.signcolumn = 'yes'
+opt.list = true
+opt.listchars = { tab = '> ', trail = '·', nbsp = '_' }
 
 -- Highlight line under cursor
-vim.opt.cursorline = true
+opt.cursorline = true
 
 -- Pad cursor
-vim.opt.scrolloff = 8
+opt.scrolloff = 8
 
 -- Search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+opt.ignorecase = true
+opt.smartcase = true
 
 -- Ask to save the file
-vim.opt.confirm = true
+opt.confirm = true
 
 -- Splits
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+opt.splitright = true
+opt.splitbelow = true
 
 -- Substitution preview
-vim.opt.inccommand = 'split'
+opt.inccommand = 'split'
 
 -- Shared clipboard
-vim.schedule(function()
-    vim.opt.clipboard = 'unnamedplus'
-end)
+opt.clipboard = 'unnamedplus'
