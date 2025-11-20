@@ -15,6 +15,7 @@ vim.keymap.set('n', '<C-S-Up>', '<C-w>K', { desc = 'Move window up' })
 -- Buffers
 vim.keymap.set('n', '<Tab>', vim.cmd.bnext, { desc = 'Go to next buffer' })
 vim.keymap.set('n', '<S-Tab>', vim.cmd.bprevious, { desc = 'Go to previous buffer' })
+vim.keymap.set('n', '<leader>bd', vim.cmd.bdelete, { desc = '[B]uffer [D]elete' })
 
 -- Navigation
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
