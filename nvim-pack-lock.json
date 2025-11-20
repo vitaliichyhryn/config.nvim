@@ -1,0 +1,20 @@
+{
+  "plugins": {
+    "blink.cmp": {
+      "version": "1.0.0 - 2.0.0"
+    },
+    "conform.nvim": [],
+    "gitsigns.nvim": [],
+    "mason-lspconfig.nvim": [],
+    "mason.nvim": [],
+    "mini.nvim": [],
+    "nvim-lspconfig": [],
+    "nvim-treesitter": {
+      "version": "'master'"
+    },
+    "nvim-treesitter-textobjects": [],
+    "plenary.nvim": [],
+    "rose-pine": [],
+    "telescope.nvim": []
+  }
+}
