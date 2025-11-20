@@ -48,3 +48,6 @@ opt.inccommand = 'split'
 
 -- Shared clipboard
 opt.clipboard = 'unnamedplus'
+
+-- Modelines
+opt.modeline = false
